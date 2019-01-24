@@ -1,0 +1,58 @@
+$darkBgColor:   #000;
+$lightBgColor:  #FFF;
+$primaryColor:  #E50914;
+
+$videoPercentage: 80%;
+$barPercentage: (100% - $videoPercentage)/2;
+
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#main-container {
+    background-color:   $darkBgColor;
+    height: 100vh;
+}
+
+#video-container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $darkBgColor;
+    height: $videoPercentage;
+
+    #main-video {
+        width: 100%;
+        height: 100%;
+    }
+
+}
+
+#choice-container {
+    position: absolute;
+    bottom: 0;
+    background-color: $darkBgColor;
+    height: $barPercentage;
+    width: 100%;
+    transition: height 2s;
+
+    #timer-bar {
+        background-color: $lightBgColor;
+        top: 0;
+        height: 5px;
+        width: 100%;
+        margin: auto;
+        transition: width 10s;
+    }
+
+    #choice-bar {
+        color: $lightBgColor;
+        height: 100%;
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+
+}
