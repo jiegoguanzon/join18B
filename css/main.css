@@ -5,7 +5,7 @@
 }
 
 #main-container {
-  background-color: #FFF;
+  background-color: #000;
   height: 100vh;
 }
 
@@ -14,7 +14,7 @@
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  background-color: #FFF;
+  background-color: #000;
   height: 80%;
 }
 
@@ -24,6 +24,7 @@
 }
 
 #choice-container {
+  z-index: 2147483647;
   position: absolute;
   bottom: 0;
   background-color: #000;
@@ -33,6 +34,8 @@
   transition: -webkit-transform 2s;
   transition: transform 2s;
   transition: transform 2s, -webkit-transform 2s;
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
   -webkit-transform: translateY(100%);
           transform: translateY(100%);
 }
@@ -55,25 +58,44 @@
   text-align: center;
 }
 
-#choice-container #choice-bar .choice {
+#choice-container #choice-bar .choice, #choice-container #choice-bar .selected-choice, #choice-container #choice-bar .unselected-choice {
   position: relative;
   top: 25%;
   display: inline;
-  color: grey;
   font-size: 6vh;
   text-transform: uppercase;
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
 }
 
-#choice-container #choice-bar .choice:hover {
+#choice-container #choice-bar .choice {
+  color: grey;
+  pointer-events: all;
+}
+
+#choice-container #choice-bar .selected-choice {
   color: #FFF;
-  -webkit-transition: color 0.5s;
-  transition: color 0.5s;
+}
+
+#choice-container #choice-bar .unselected-choice {
+  color: grey;
+  pointer-events: none;
+}
+
+#choice-container #choice-bar .choice:hover, #choice-container #choice-bar .selected-choice:hover {
+  color: #FFF;
   cursor: pointer;
 }
 
 #choice-container #choice-bar #choice1 {
   margin-right: 30%;
+}
+
+@media only screen and (max-width: 768px) {
+  #video-container {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+    height: 100vw;
+  }
 }
 /*# sourceMappingURL=main.css.map */

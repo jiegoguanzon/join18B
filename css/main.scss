@@ -12,7 +12,7 @@ $barPercentage: 20%;
 }
 
 #main-container {
-    background-color: $lightBgColor;
+    background-color: $darkBgColor;
     height: 100vh;
 }
 
@@ -20,7 +20,7 @@ $barPercentage: 20%;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    background-color: $lightBgColor;
+    background-color: $darkBgColor;
     height: $videoPercentage;
 
     #main-video {
@@ -31,12 +31,14 @@ $barPercentage: 20%;
 }
 
 #choice-container {
+    z-index: 2147483647;
     position: absolute;
     bottom: 0;
     background-color: $darkBgColor;
     height: $barPercentage;
     width: 100%;
     transition: transform 2s;
+    transition-delay: 0.5s;
     transform: translateY(100%);
 
     #timer-bar {
@@ -55,19 +57,31 @@ $barPercentage: 20%;
         margin: auto;
         text-align: center;
 
-        .choice {
+        .choice, .selected-choice, .unselected-choice {
             position: relative;
             top: 25%;
             display: inline;
-            color: grey;
             font-size: 6vh;
             text-transform: uppercase;
             transition: color 0.5s;
         }
 
-        .choice:hover {
+        .choice {
+            color: grey;
+            pointer-events: all;
+        }
+
+        .selected-choice {
+            color: #FFF;
+        }
+
+        .unselected-choice {
+            color: grey;
+            pointer-events: none;
+        }
+
+        .choice:hover, .selected-choice:hover {
             color: $lightBgColor;
-            transition: color 0.5s;
             cursor: pointer;
         }
 
@@ -77,4 +91,11 @@ $barPercentage: 20%;
 
     }
 
+}
+
+@media only screen and (max-width: 768px){
+    #video-container{
+        transform: rotate(90deg);
+        height: 100vw;
+    }
 }
