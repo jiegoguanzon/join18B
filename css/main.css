@@ -44,7 +44,7 @@
   background-color: #FFF;
   top: 0;
   height: 5px;
-  width: 100%;
+  width: 0%;
   margin: auto;
   -webkit-transition: width 10s linear;
   transition: width 10s linear;
@@ -58,7 +58,7 @@
   text-align: center;
 }
 
-#choice-container #choice-bar .choice, #choice-container #choice-bar .selected-choice, #choice-container #choice-bar .unselected-choice {
+#choice-container #choice-bar .choice, #choice-container #choice-bar .clickable-choice, #choice-container #choice-bar .selected-choice, #choice-container #choice-bar .unselected-choice {
   position: relative;
   top: 25%;
   display: inline;
@@ -70,21 +70,27 @@
 
 #choice-container #choice-bar .choice {
   color: grey;
+  pointer-events: none;
+}
+
+#choice-container #choice-bar .clickable-choice {
+  color: grey;
   pointer-events: all;
+}
+
+#choice-container #choice-bar .clickable-choice:hover {
+  color: #FFF;
+  cursor: pointer;
 }
 
 #choice-container #choice-bar .selected-choice {
   color: #FFF;
+  pointer-events: none;
 }
 
 #choice-container #choice-bar .unselected-choice {
   color: grey;
   pointer-events: none;
-}
-
-#choice-container #choice-bar .choice:hover, #choice-container #choice-bar .selected-choice:hover {
-  color: #FFF;
-  cursor: pointer;
 }
 
 #choice-container #choice-bar #choice1 {

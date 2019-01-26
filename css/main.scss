@@ -45,7 +45,7 @@ $barPercentage: 20%;
         background-color: $lightBgColor;
         top: 0;
         height: 5px;
-        width: 100%;
+        width: 0%;
         margin: auto;
         transition: width 10s linear;
     }
@@ -57,7 +57,7 @@ $barPercentage: 20%;
         margin: auto;
         text-align: center;
 
-        .choice, .selected-choice, .unselected-choice {
+        .choice, .clickable-choice, .selected-choice, .unselected-choice {
             position: relative;
             top: 25%;
             display: inline;
@@ -68,21 +68,27 @@ $barPercentage: 20%;
 
         .choice {
             color: grey;
+            pointer-events: none;
+        }
+
+        .clickable-choice {
+            color: grey;
             pointer-events: all;
+        }
+
+        .clickable-choice:hover {
+            color: $lightBgColor;
+            cursor: pointer;
         }
 
         .selected-choice {
             color: #FFF;
+            pointer-events: none;
         }
 
         .unselected-choice {
             color: grey;
             pointer-events: none;
-        }
-
-        .choice:hover, .selected-choice:hover {
-            color: $lightBgColor;
-            cursor: pointer;
         }
 
         #choice1 {
