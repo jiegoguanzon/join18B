@@ -1,3 +1,5 @@
+var logoContainer = document.getElementById("logo-container");
+var logo= document.getElementById("circuit-logo");
 var currentVideo = document.getElementById("main-video");
 var videoSource = document.getElementById("video-source");
 var choiceContainer = document.getElementById("choice-container");
@@ -18,6 +20,16 @@ var nextChoice1 = "Snooze";
 var nextChoice2 = "Stop";
 
 updateChoices();
+
+logoContainer.addEventListener("click", function() {
+    logoContainer.style.opacity = "0";
+});
+
+logoContainer.addEventListener("transitionend", function(e) {
+    if(e.propertyName == "opacity"){
+        logoContainer.style.display = "none";
+    }
+});
 
 currentVideo.addEventListener("click", function () {
     currentVideo.play();
