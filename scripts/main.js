@@ -28,13 +28,17 @@ logoContainer.addEventListener("click", function() {
 logoContainer.addEventListener("transitionend", function(e) {
     if(e.propertyName == "opacity"){
         logoContainer.style.display = "none";
+        currentVideo.play();
+        trackVideoPos = true;
     }
 });
 
+/*
 currentVideo.addEventListener("click", function () {
     currentVideo.play();
     trackVideoPos = true;
 });
+*/
 
 currentVideo.addEventListener("ended", function () {
     switch(parseVideoName()){

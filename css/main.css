@@ -10,11 +10,15 @@
 }
 
 #main-container #logo-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
   width: 100vw;
   height: 100vh;
   z-index: 100;
   -webkit-transition: opacity 2s;
   transition: opacity 2s;
+  background-color: #000;
 }
 
 #main-container #logo {
@@ -190,10 +194,34 @@
 }
 
 @media only screen and (max-width: 768px) {
-  #video-container {
+  #main-container {
+    /*
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 100vh;
+        */
     -webkit-transform: rotate(90deg);
             transform: rotate(90deg);
-    height: 100vw;
+  }
+  #video-container {
+    /*
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        transform: rotate(90deg);
+        */
+    min-height: 100%;
+    min-width: 100%;
+  }
+  #main-video {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
   }
 }
 /*# sourceMappingURL=main.css.map */

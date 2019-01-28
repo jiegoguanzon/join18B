@@ -16,10 +16,14 @@ $barPercentage: 20%;
     height: 100vh;
 
     #logo-container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
         width: 100vw;
         height: 100vh;
         z-index: 100;
         transition: opacity 2s;
+        background-color: $darkBgColor;
     }
 
     #logo {
@@ -152,8 +156,33 @@ $barPercentage: 20%;
 }
 
 @media only screen and (max-width: 768px){
-    #video-container{
+    #main-container {
+        /*
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 100vh;
+        */
         transform: rotate(90deg);
-        height: 100vw;
+    }
+
+    #video-container {
+        /*
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        transform: rotate(90deg);
+        */
+        min-height: 100%;
+        min-width: 100%;
+    }
+
+    #main-video {
+        min-width: 100%;
+        min-height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
