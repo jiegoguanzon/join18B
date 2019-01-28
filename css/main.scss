@@ -101,7 +101,7 @@ $barPercentage: 20%;
         background-color: $lightBgColor;
         top: 0;
         height: 5px;
-        width: 0%;
+        width: 100%;
         margin: auto;
         transition: width 10s linear;
     }
@@ -156,33 +156,23 @@ $barPercentage: 20%;
 }
 
 @media only screen and (max-width: 768px){
-    #main-container {
-        /*
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        height: 100vh;
-        */
-        transform: rotate(90deg);
+    html, body {
+        overflow: hidden;
     }
 
-    #video-container {
-        /*
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        transform: rotate(90deg);
-        */
-        min-height: 100%;
-        min-width: 100%;
+    body {
+        position: relative;
     }
 
-    #main-video {
-        min-width: 100%;
-        min-height: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    #circuit-logo {
+        animation: rotate 2s infinite !important;
+    }
+
+    @keyframes rotate {
+       0% {transform: rotate(0deg)} 
+       60% {transform: rotate(90deg)} 
+       80% {transform: rotate(90deg)} 
+       90% {transform: rotate(0deg)} 
+       100% {transform: rotate(0deg)} 
     }
 }

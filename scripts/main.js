@@ -68,14 +68,18 @@ currentVideo.addEventListener("timeupdate", function () {
     }
 });
 
+/*
 choiceContainer.addEventListener("transitionstart", function (e) {
+    console.log("choiceContainerStart");
     if(e.propertyName == "transform" && choiceBarHidden){
         timerBar.style.transition = "width 2s linear";
         timerBar.style.width = "100%";
     }
 });
+*/
 
 choiceContainer.addEventListener("transitionend", function (e) {
+    console.log("choiceContainerEnd");
     if(e.propertyName == "transform"){
         choiceBarHidden = !choiceBarHidden;
         if(!choiceBarHidden){
@@ -84,6 +88,8 @@ choiceContainer.addEventListener("transitionend", function (e) {
             timerBar.style.transition = "width 10s linear";
             timerBar.style.width = "0%";
         } else {
+            timerBar.style.transition = "width 0s linear";
+            timerBar.style.width = "100%";
             updateChoices();
             choice1.className = "choice";
             choice2.className = "choice";
