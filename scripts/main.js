@@ -1,5 +1,8 @@
 var logoContainer = document.getElementById("logo-container");
 var logo= document.getElementById("circuit-logo");
+var introContainer = document.getElementById("intro-container");
+var introCard = document.getElementById("intro-card");
+var titleCard = document.getElementById("title-card");
 var currentVideo = document.getElementById("main-video");
 var videoSource = document.getElementById("video-source");
 var choiceContainer = document.getElementById("choice-container");
@@ -8,6 +11,8 @@ var choice1 = document.getElementById("choice1");
 var choice2 = document.getElementById("choice2");
 
 const excessVideoDuration = 15.5; // 15 + 0.5 
+
+var introStage = 0;
 
 var choiceBarHidden = true; 
 var trackVideoPos = true; 
@@ -20,6 +25,7 @@ var nextChoice1 = "Snooze";
 var nextChoice2 = "Stop";
 
 updateChoices();
+currentVideo.load();
 
 logoContainer.addEventListener("click", function() {
     logoContainer.style.opacity = "0";
@@ -28,8 +34,42 @@ logoContainer.addEventListener("click", function() {
 logoContainer.addEventListener("transitionend", function(e) {
     if(e.propertyName == "opacity"){
         logoContainer.style.display = "none";
-        currentVideo.play();
-        trackVideoPos = true;
+        introCard.style.opacity = "1";
+        introStage++;
+    }
+});
+
+introCard.addEventListener("transitionend", function (e) {
+    if(e.propertyName == "opacity"){
+        if(introStage == 1){
+            introCard.style.opacity = "0";
+        } else if (introStage == 2) {
+            introCard.style.display = "none";
+            titleCard.style.opacity = "1";
+        }
+        introStage++;
+    }
+});
+
+titleCard.addEventListener("transitionend", function (e) {
+    if(e.propertyName == "opacity"){
+        if(introStage == 3){
+            titleCard.style.opacity = "0";
+        } else if (introStage == 4) {
+            titleCard.style.display = "none";
+            introContainer.style.opacity = "0";
+        }
+        introStage++;
+    }
+});
+
+introContainer.addEventListener("transitionend", function (e) {
+    if(e.propertyName == "opacity"){
+        if(introStage == 5){
+            introContainer.style.display = "none";
+            currentVideo.play();
+            trackVideoPos = true;
+        }
     }
 });
 

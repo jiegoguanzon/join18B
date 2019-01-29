@@ -5,7 +5,14 @@ $primaryColor:  #E50914;
 $videoPercentage: 80%;
 $barPercentage: 20%;
 
+@font-face {
+    font-family: 'ProximaNova';
+	src: url('fonts/proximanovaregular-webfont.woff') format('woff'),
+	     url('fonts/proximanovaregular-webfont.ttf') format('truetype');
+}
+
 * {
+    font-family: 'ProximaNova';
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -15,7 +22,7 @@ $barPercentage: 20%;
     background-color: $darkBgColor;
     height: 100vh;
 
-    #logo-container {
+    #logo-container, #intro-container {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -24,6 +31,10 @@ $barPercentage: 20%;
         z-index: 100;
         transition: opacity 2s;
         background-color: $darkBgColor;
+    }
+
+    #intro-container {
+        z-index: 99;
     }
 
     #logo {
@@ -49,6 +60,21 @@ $barPercentage: 20%;
        5% {transform: scale(1.1);} 
        10% {transform: scale(1);} 
        100% {transform: scale(1);} 
+    }
+
+    #intro-card, #title-card {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #FFF;
+        opacity: 0;
+        transition: opacity 2s;
+        transition-delay: 1s;
+        text-align: center;
+        font-size: 6vh;
+        width: auto;
+        height: auto;
+        margin: auto;
     }
 
     #start-message {
