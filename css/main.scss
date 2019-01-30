@@ -104,6 +104,8 @@ $barPercentage: 20%;
     transform: translateY(-50%);
     background-color: $darkBgColor;
     height: $videoPercentage;
+    opacity: 1;
+    transition: opacity 3s;
 
     #main-video {
         width: 100%;
@@ -175,10 +177,34 @@ $barPercentage: 20%;
 
         #choice1 {
             margin-right: 30%;
+            transition: opacity 1s;
+        }
+
+        #choice2 {
+            transition: opacity 1s;
         }
 
     }
 
+}
+
+#form-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $darkBgColor;
+    z-index: 98;
+    color: $lightBgColor;
+    opacity: 0;
+    transition: opacity 3s;
+
+    #main-form {
+        width: 40%;
+        margin: auto;
+        text-align: center;
+    }
 }
 
 @media only screen and (max-width: 768px){
