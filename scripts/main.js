@@ -1,14 +1,19 @@
 var logoContainer = document.getElementById("logo-container");
-var logo= document.getElementById("circuit-logo");
+var formContainer = document.getElementById("form-container");
 var introContainer = document.getElementById("intro-container");
+var videoContainer = document.getElementById("video-container");
+var choiceContainer = document.getElementById("choice-container");
+
 var introCard = document.getElementById("intro-card");
 var titleCard = document.getElementById("title-card");
+
 var currentVideo = document.getElementById("main-video");
 var videoSource = document.getElementById("video-source");
-var choiceContainer = document.getElementById("choice-container");
-var timerBar = document.getElementById("timer-bar");
+
 var choice1 = document.getElementById("choice1");
 var choice2 = document.getElementById("choice2");
+var logo= document.getElementById("circuit-logo");
+var timerBar = document.getElementById("timer-bar");
 
 const excessVideoDuration = 15.5; // 15 + 0.5 
 
@@ -73,12 +78,11 @@ introContainer.addEventListener("transitionend", function (e) {
     }
 });
 
-/*
-currentVideo.addEventListener("click", function () {
-    currentVideo.play();
-    trackVideoPos = true;
+videoContainer.addEventListener("transitionend", function (e) {
+    if(e.propertyName == "opacity"){
+        videoContainer.style.display = "none";
+    }
 });
-*/
 
 currentVideo.addEventListener("ended", function () {
     switch(parseVideoName()){
@@ -92,6 +96,10 @@ currentVideo.addEventListener("ended", function () {
         break;
         case "late.mp4":
             restart();
+        break;
+        case "exam.mp4":
+            videoContainer.style.opacity = "0";
+            formContainer.style.opacity = "1";
         break;
     }
     videoSource.src = nextVidSource;
@@ -133,6 +141,8 @@ choiceContainer.addEventListener("transitionend", function (e) {
             updateChoices();
             choice1.className = "choice";
             choice2.className = "choice";
+            choice1.style.opacity = "1";
+            choice2.style.opacity = "1";
             currentChoice = 0;
         }
     }
@@ -151,6 +161,7 @@ choice1.addEventListener("click", function () {
     currentChoice = 1;
     choice1.className = "selected-choice";
     choice2.className = "unselected-choice";
+    choice2.style.opacity = "0";
     updateSelection();
 });
 
@@ -158,6 +169,7 @@ choice2.addEventListener("click", function () {
     currentChoice = 2;
     choice2.className = "selected-choice";
     choice1.className = "unselected-choice";
+    choice1.style.opacity = "0";
     updateSelection();
 });
 

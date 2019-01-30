@@ -140,6 +140,9 @@
           transform: translateY(-50%);
   background-color: #000;
   height: 80%;
+  opacity: 1;
+  -webkit-transition: opacity 3s;
+  transition: opacity 3s;
 }
 
 #video-container #main-video {
@@ -219,6 +222,33 @@
 
 #choice-container #choice-bar #choice1 {
   margin-right: 30%;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+#choice-container #choice-bar #choice2 {
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+#form-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  z-index: 98;
+  color: #FFF;
+  opacity: 0;
+  -webkit-transition: opacity 3s;
+  transition: opacity 3s;
+}
+
+#form-container #main-form {
+  width: 40%;
+  margin: auto;
+  text-align: center;
 }
 
 @media only screen and (max-width: 768px) {
