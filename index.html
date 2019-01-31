@@ -15,7 +15,7 @@
     <div id="main-container">
         <div id="logo-container">
             <div id="logo">
-                <img src="media/upcircuitformal.png" alt="U.P. Circuit Logo" id="circuit-logo">
+                <img src="media/upcircuitformal_small.png" alt="U.P. Circuit Logo" id="circuit-logo">
             </div>
             <!--
             <span><i class="fas fa-angle-up" id="arrow"></i></span>
@@ -26,14 +26,16 @@
         </div>
         <div id="intro-container">
             <div id="intro-card">
-                <h1>U.P. Circuit<br/>presents</h1>
+                <h1>UP Circuit<br/>presents</h1>
             </div>
+            <!--
             <div id="title-card">
                 <h1>Mum I'm Late For School</h1>
             </div>
+            -->
         </div>
         <div id="video-container">
-            <video id="main-video" muted>
+            <video id="main-video">
                 <source id="video-source" src="media/wakeUp.mp4" type="video/mp4">
             </video>
         </div>
@@ -45,32 +47,50 @@
             </div>
         </div>
         <div id="form-container">
-            <form id="main-form" action="" method="post">
+            <form id="main-form" action="https://docs.google.com/forms/d/e/1FAIpQLScR_uOBAOVzkI0k7OIOzBmcl6XkJx4FuOzCmui6QUbG8iBuEw/formResponse" method="post" target="hidden_iframe">
                 <label for="first-name">First name:</label>
-                <input type="text" name="" id="first-name">
+                <input type="text" name="entry.1303084487" placeholder="Colin" id="first-name" required>
+
                 <label for="last-name">Last name:</label>
-                <input type="text" name="" id="last-name">
+                <input type="text" name="entry.1753081466" placeholder="Ritman" id="last-name" required>
 
-                <label for="male">Male</label>
-                <input type="radio" name="gender" id="male">
-                <label for="female">Female</label>
-                <input type="radio" name="gender" id="female">
-                <label for="non-binary">Non-binary</label>
-                <input type="radio" name="gender" id="non-binary">
+                <label for="gender">Gender: </label>
+                <div class="genderbendinator">
+                <label for="male" class="gender-container">Male
+                    <input type="radio" name="gender" id="male">
+                    <span class="checkmark"></span>
+                </label>
+                <label for="female" class="gender-container">Female
+                    <input type="radio" name="gender" id="female">
+                    <span class="checkmark"></span>
+                </label>
+                <label for="non-binary" class="gender-container">Non-binary
+                    <input type="radio" name="gender" id="non-binary">
+                    <span class="checkmark"></span>
+                </label>
+                </div>
 
-                <select name="course" id="courses">
-                    <option value="coe">BS CoE</option>
-                    <option value="ee">BS EE</option>
-                    <option value="ece">BS ECE</option>
+                <label for="courses">Course: </label>
+                <select name="entry.382812467" id="courses">
+                    <option value="BS CoE">BS CoE</option>
+                    <option value="BS EE">BS EE</option>
+                    <option value="BS ECE">BS ECE</option>
                 </select>
 
                 <label for="contact-number">Contact number:</label>
-                <input type="text" name="" id="contact-number">
+                <input type="text" name="entry.371867106" placeholder="09XX XXX XXXX" id="contact-number" required>
+
+                <label for="fb-link">Facebook link:</label>
+                <input type="text" name="entry.524938774" placeholder="fb.com/ColinRitman" id="fb-link" required>
 
                 <input type="submit" value="Submit">
             </form>
         </div>
+        <div id="end-container">
+            <h1>See you!</h1>
+        </div>
     </div>
+    <div id="iframe-container"></div>
     <script src="scripts/main.js"></script>
 </body>
 </html>
