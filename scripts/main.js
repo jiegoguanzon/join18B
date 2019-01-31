@@ -7,6 +7,7 @@ var endContainer = document.getElementById("end-container");
 var iframeContainer = document.getElementById("iframe-container");
 
 var mainForm = document.getElementById("main-form");
+var mainAudio = document.getElementById("main-audio");
 
 var introCard = document.getElementById("intro-card");
 var titleCard = document.getElementById("title-card");
@@ -31,10 +32,18 @@ var currentChoice = 0;
 var showChoices = 1;
 
 var nextChoice1 = "Snooze";
-var nextChoice2 = "Stop";
+var nextChoice2 = "Get up";
 
 updateChoices();
 currentVideo.load();
+
+var isMobile = 0;
+mainAudio.volume = 0.025;
+
+if(window.innerWidth <= 768){
+    isMobile = 1;
+    mainAudio.volume = 0.2;
+}
 
 mainForm.onsubmit = function () {
     formContainer.style.opacity = "0";
@@ -49,35 +58,37 @@ formContainer.addEventListener("transitionend", function(e) {
 
 logoContainer.addEventListener("click", function() {
     logoContainer.style.opacity = "0";
+    mainAudio.play();
+    if(isMobile){
+        iframeContainer.innerHTML = "<iframe name='hidden_iframe' id='hidden_iframe'><iframe>";
+    }
 });
 
 logoContainer.addEventListener("transitionend", function(e) {
     if(e.propertyName == "opacity"){
         logoContainer.style.display = "none";
         introCard.style.opacity = "1";
-        console.log(introStage)
         introStage++;
+        if(isMobile)
+            formContainer.style.opacity = "1";
     }
 });
 
 introCard.addEventListener("transitionend", function (e) {
     if(e.propertyName == "opacity"){
-        console.log(introStage)
         if(introStage == 1){
             introCard.style.opacity = "0";
         } else if (introStage == 2) {
             introCard.style.display = "none";
-            //titleCard.style.opacity = "1";
-            introContainer.style.opacity = "0";
+            titleCard.style.opacity = "1";
+            //introContainer.style.opacity = "0";
         }
         introStage++;
     }
 });
 
-/*
 titleCard.addEventListener("transitionend", function (e) {
     if(e.propertyName == "opacity"){
-        console.log(introStage)
         if(introStage == 3){
             titleCard.style.opacity = "0";
         } else if (introStage == 4) {
@@ -87,11 +98,10 @@ titleCard.addEventListener("transitionend", function (e) {
         introStage++;
     }
 });
-*/
 
 introContainer.addEventListener("transitionend", function (e) {
     if(e.propertyName == "opacity"){
-        if(introStage == 3){
+        if(introStage == 5){
             introContainer.style.display = "none";
             currentVideo.play();
             trackVideoPos = true;
@@ -144,7 +154,7 @@ currentVideo.addEventListener("timeupdate", function () {
         trackVideoPos = false;
     }
 
-    if((currentVideo.duration - currentVideo.currentTime <= 3) && choiceBarHidden && (parseVideoName() == "exam.mp4")){
+    if((currentVideo.duration - currentVideo.currentTime <= 2) && choiceBarHidden && (parseVideoName() == "exam.mp4")){
         videoContainer.style.opacity = "0";
         formContainer.style.opacity = "1";
     }
@@ -259,7 +269,7 @@ function updateChoices() {
 function restart() {
     nextVidSource = "media/wakeUp.mp4";
     nextChoice1 = "Snooze";
-    nextChoice2 = "Stop";
+    nextChoice2 = "Get up";
     showChoices = 1;
     updateChoices();
 }

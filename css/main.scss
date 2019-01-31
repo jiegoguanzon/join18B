@@ -90,7 +90,7 @@ iframe {
         transition: opacity 2s;
         transition-delay: 1s;
         text-align: center;
-        font-size: 6vh;
+        font-size: 5vh;
         width: auto;
         height: auto;
         margin: auto;
@@ -124,7 +124,7 @@ iframe {
     background-color: $darkBgColor;
     height: $videoPercentage;
     opacity: 1;
-    transition: opacity 3s;
+    transition: opacity 2s;
 
     #main-video {
         width: 100%;
@@ -217,7 +217,7 @@ iframe {
     z-index: 98;
     color: $lightBgColor;
     opacity: 0;
-    transition: opacity 3s;
+    transition: opacity 2s;
     pointer-events: none;
 
     #main-form {
@@ -299,38 +299,30 @@ iframe {
 }
 
 @media only screen and (max-width: 768px){
-    @media screen and (orientation: portrait){
-        html, body {
-            overflow: hidden;
-        }
 
-        body {
-            position: relative;
-        }
+    * {
+        overflow: hidden;
+    }
 
-        #circuit-logo {
-            animation: rotate 2s 3 !important;
-            transition: transform 2s !important;
-            transition-delay: 7s !important;
-            transform: rotate(90deg);
-        }
+    #intro-container, #video-container, #choice-container {
+        display: none;
+        pointer-events: none;
+    }
 
-        @keyframes rotate {
-            0% {transform: rotate(0deg)} 
-            60% {transform: rotate(90deg)} 
-            80% {transform: rotate(90deg)} 
-            90% {transform: rotate(0deg)} 
-            100% {transform: rotate(0deg)} 
-        }
+    #form-container {
+        opacity: 0;
+        pointer-events: all;
 
-        #video-container {
-            height: 100%;
-        }
+        #main-form {
+            top: 0;
+            transform: translateY(0%);
+            width: 90%;
+            padding-top: 30px;
 
-        #main-video {
-            transform: rotate(90deg);
-            height: 100%;
+            .gender-container {
+                text-align: left;
+                display: block;
+            }
         }
-
     }
 }
