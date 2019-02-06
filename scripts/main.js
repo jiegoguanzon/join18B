@@ -6,6 +6,8 @@ var choiceContainer = document.getElementById("choice-container");
 var endContainer = document.getElementById("end-container");
 var iframeContainer = document.getElementById("iframe-container");
 
+var startMessage = document.getElementById("start-message");
+
 var mainForm = document.getElementById("main-form");
 var mainAudio = document.getElementById("main-audio");
 
@@ -34,23 +36,37 @@ var showChoices = 1;
 var nextChoice1 = "Snooze";
 var nextChoice2 = "Get up";
 
+var showEndScreen = 0;
+
 updateChoices();
 currentVideo.load();
 
 var isMobile = 0;
-mainAudio.volume = 0.025;
+mainAudio.volume = 0.2;
 
 if(window.innerWidth <= 768){
     isMobile = 1;
     mainAudio.volume = 0.2;
+    startMessage.innerHTML = "Get the full experience when you access our site from the desktop.";
+    if(isMobile){
+        iframeContainer.innerHTML = "<iframe name='hidden_iframe' id='hidden_iframe'><iframe>";
+    }
 }
+
+mainAudio.addEventListener("ended", function () {
+    mainAudio.load();
+    mainAudio.play();
+});
 
 mainForm.onsubmit = function () {
     formContainer.style.opacity = "0";
 }
 
 formContainer.addEventListener("transitionend", function(e) {
-    if(e.propertyName == "opacity" && formContainer.style.opacity == 0){
+    if(e.propertyName == "opacity" && formContainer.style.opacity == 1){
+        showEndScreen = 1;
+    }
+    if(e.propertyName == "opacity" && formContainer.style.opacity == 0 && showEndScreen){
         formContainer.style.display = "none";
         endContainer.style.opacity = "1";
     }
@@ -59,9 +75,6 @@ formContainer.addEventListener("transitionend", function(e) {
 logoContainer.addEventListener("click", function() {
     logoContainer.style.opacity = "0";
     mainAudio.play();
-    if(isMobile){
-        iframeContainer.innerHTML = "<iframe name='hidden_iframe' id='hidden_iframe'><iframe>";
-    }
 });
 
 logoContainer.addEventListener("transitionend", function(e) {
